@@ -13,7 +13,6 @@
     </head>
     <body>
       <h1>Browser Template</h1>
-      <p id="display-message"></p>
       <form id="sign-up-form">
         <legend> Create a new account </legend>
         <p> Username </p>
@@ -21,8 +20,9 @@
         <p> Password </p>
         <input required type="password" name="credentials[password]" placeholder="Enter Password">
         <p> Confirm Password </p>
-        <input required type="password" name="credentials[password]" placeholder="Confirm Password">
+        <input required type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
         <input type="submit">
       </form>
+      <p id="display-message"></p>
     </body>
 </html>
