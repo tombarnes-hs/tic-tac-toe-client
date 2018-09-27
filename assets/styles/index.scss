@@ -1,1 +1,16 @@
 @import '~bootstrap/scss/bootstrap';
+
+.container {
+  background-color: #010101;
+  max-width: 60%;
+}
+
+.row {
+  height: 100px;
+}
+
+.col-sm {
+  background-color: #efefef;
+  border: 1px solid black;
+  text-align: center;
+}
