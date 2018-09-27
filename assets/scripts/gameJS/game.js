@@ -22,24 +22,48 @@ const store = require('../store.js')
 const gameBoard = [
   '', '', '',
   '', '', '',
-  '', '', '']
-// function to add x's or o's based on user.play to the game array
+  '', '', ''
+]
+
 // create a play count variable...
 let playCount = 0
 //  that stores number of plays made
-// const playCounter = function () {
-//   if (playCount % 2 === 0) {
-//     //user plays 'x'
-//
-//       //user plays 'o'
-//     }
-//     playCount++
-//   }
+
+// create a currentLetter variable
+let currentLetter
+
+// play counter that determines whether 'x' or 'o ' is played
+const alternator = function () {
+  if (playCount % 2 === 0) {
+    // user plays 'x'
+    currentLetter = 'x'
+  } else {
+  // user plays 'o'
+    currentLetter = 'o'
+  }
+}
+
+alternator()
+console.log(currentLetter)
+
+// FUNCTION: Assign numeric values to html boxes that will be associated with gameboard[i]
+
+// FUNCTION: Assign 'x' or 'o' to gameboard
+
+// EVENT: if a user clicks a box and that box is empty:
+// add X or O to html element
+// invoke function that assigns 'x' or 'o' to gameboard array
+// invoke playCounter
+// invoke checkForVictory function
 
 // function that changes the value of specific array index
-const playMade = function (banana) {
-  gameBoard[banana] = 'x'
+const playMade = function () {
+  gameBoard[0] = currentLetter
   playCount++
+  alternator()
+  gameBoard[1] = currentLetter
+  playCount++
+  alternator()
 }
 playMade()
 
@@ -82,6 +106,8 @@ const checkForVictory = function () {
 
 console.log(gameBoard)
 checkForVictory()
+// alternator()
+console.log(currentLetter)
 
 // module.exports = {
 //   currentPlayer
