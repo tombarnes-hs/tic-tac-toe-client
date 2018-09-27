@@ -25,49 +25,6 @@ const gameBoard = [
   '', '', ''
 ]
 
-// create a play count variable...
-let playCount = 0
-//  that stores number of plays made
-
-// create a currentLetter variable
-let currentLetter
-
-// play counter that determines whether 'x' or 'o ' is played
-const alternator = function () {
-  if (playCount % 2 === 0) {
-    // user plays 'x'
-    currentLetter = 'x'
-  } else {
-  // user plays 'o'
-    currentLetter = 'o'
-  }
-}
-
-alternator()
-console.log(currentLetter)
-
-// FUNCTION: Assign numeric values to html boxes that will be associated with gameboard[i]
-
-// FUNCTION: Assign 'x' or 'o' to gameboard
-
-// EVENT: if a user clicks a box and that box is empty:
-// add X or O to html element
-// invoke function that assigns 'x' or 'o' to gameboard array
-// invoke playCounter
-// invoke checkForVictory function
-
-// function that changes the value of specific array index
-const playMade = function () {
-  gameBoard[0] = currentLetter
-  playCount++
-  alternator()
-  gameBoard[1] = currentLetter
-  playCount++
-  alternator()
-}
-playMade()
-
-console.log(playCount)
 const checkForVictory = function () {
   // after a user.play being successful, invoke check for victory condition function
   // victory is [0], [1], [3] having the same values
@@ -104,11 +61,59 @@ const checkForVictory = function () {
   }
 }
 
+// create a play count variable...
+let playCount = 0
+//  that stores number of plays made
+
+// create a currentLetter variable
+let currentLetter
+
+// play counter that determines whether 'x' or 'o ' is played
+const alternator = function () {
+  if (playCount % 2 === 0) {
+    // user plays 'x'
+    currentLetter = 'x'
+  } else {
+  // user plays 'o'
+    currentLetter = 'o'
+  }
+}
+
+alternator()
+console.log(currentLetter)
+
+// FUNCTION: Assign numeric values to html boxes that will be associated with gameboard[i]
+
+// function that changes the value of specific array index when a play is made
+const playMade = function () {
+  // check to see if the array index is already occupied
+  if (gameBoard[0] === '') {
+  // if no, add x or o to gameBoard array at specific index
+    gameBoard[0] = currentLetter
+    // also, add x or o to html element
+
+    // invoke playCounter
+    playCount++
+    // invoke alternator function
+    alternator()
+    // store the move
+    console.log('Play made')
+    // check for victory
+    checkForVictory()
+  // if yes, tell user to make another play
+  } else {
+    console.log('already played')
+  }
+}
+
+console.log(playCount)
+
 console.log(gameBoard)
 checkForVictory()
 // alternator()
 console.log(currentLetter)
 
-// module.exports = {
-//   currentPlayer
-// }
+module.exports = {
+  // currentPlayer,
+  playMade
+}
