@@ -73,30 +73,28 @@ let playCount = 0
 //  that stores number of plays made
 
 // create a currentLetter variable
-let currentLetter = 'x'
+let currentLetter = 'X'
 
 // play counter that determines whether 'x' or 'o ' is played
 const alternator = function () {
+  // console.log('Player ' + currentLetter + ' turn')
   if (playCount % 2 === 0) {
     // user plays 'x'
-    currentLetter = 'x'
+    currentLetter = 'X'
+    // console.log('Player X turn')
   } else {
   // user plays 'o'
-    currentLetter = 'o'
-  }
+    currentLetter = 'O'
+    // console.log('Player O turn')
+  } console.log('Player ' + currentLetter + ' turn')
 }
 
-console.log(currentLetter)
+console.log('Player ' + currentLetter + ' turn')
 
 // alternator()
 // console.log(currentLetter)
 
 // FUNCTION: Assign numeric values to html boxes that will be associated with gameboard[i]
-// const boxVal = ($('#box1').data())
-//
-// console.log(boxVal)
-
-// function that changes the value of specific array index when a play is made
 const playMade = function (event) {
   // const boxVal = ($(event.target).data('boxVal'))
   const boxVal = $(event.target).data('box')

@@ -12,7 +12,7 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <h1>Tic-Tac-Toe</h1>
       <form id="sign-up-form">
         <legend> Create a new account </legend>
         <p> Username </p>
@@ -25,12 +25,13 @@
       </form>
       <br>
       <form id="sign-in-form">
-        <legend> Already registered? Login </legend>
+        <legend> Sign-In to Begin Playing </legend>
           <p> Username </p>
         <input required type="text" name="credentials[email]" placeholder="Enter Email">
         <p> Password </p>
         <input required type="password" name="credentials[password]" placeholder="Enter Password">
         <input type="submit">
+
       </form>
       <br>
       <form id="change-password-form">
@@ -42,9 +43,12 @@
           <input type="submit">
       </form>
       <br>
+      <div id="sign-out-button">
       <p>Logout</p>
-      <button id="sign-out-button">Logout</button>
+      <button type="button">Logout</button>
+    </div>
       <p id="display-message"></p>
+      <button type="button" id="newGame-button">New Game</button>
       <div class="container">
         <div class="row">
           <div class="col-sm box grey" data-box="0">

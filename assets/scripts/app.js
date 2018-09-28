@@ -13,14 +13,15 @@ $(() => {
   $('#sign-in-form').on('submit', authEvents.onSignIn)
   $('#sign-out-button').on('click', authEvents.onSignOut)
   $('#change-password-form').on('submit', authEvents.onChangePassword)
-  // game event listeners
+  // game event listeners,
   $('.box').on('click', gameEvents.playMade)
-  // $('#box2').on('click', gameEvents.playMade)
-  // $('#box3').on('click', gameEvents.playMade)
-  // $('#box4').on('click', gameEvents.playMade)
-  // $('#box5').on('click', gameEvents.playMade)
-  // $('#box6').on('click', gameEvents.playMade)
-  // $('#box7').on('click', gameEvents.playMade)
-  // $('#box8').on('click', gameEvents.playMade)
-  // $('#box9').on('click', gameEvents.playMade)
+
+  // UI events
+  $('.container').hide()
+  $('#sign-up-form').hide()
+  $('#sign-out-button').hide()
+  $('#change-password-form').hide()
+  $('#newGame-button').hide()
+  $('#change-password-button').hide()
+  $('#newGame-button').on('click', () => { $('.container').show() })
 })
