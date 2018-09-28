@@ -66,7 +66,7 @@ let playCount = 0
 //  that stores number of plays made
 
 // create a currentLetter variable
-let currentLetter
+let currentLetter = 'x'
 
 // play counter that determines whether 'x' or 'o ' is played
 const alternator = function () {
@@ -79,19 +79,29 @@ const alternator = function () {
   }
 }
 
-alternator()
 console.log(currentLetter)
 
+// alternator()
+// console.log(currentLetter)
+
 // FUNCTION: Assign numeric values to html boxes that will be associated with gameboard[i]
+// const boxVal = ($('#box1').data())
+//
+// console.log(boxVal)
 
 // function that changes the value of specific array index when a play is made
-const playMade = function () {
+const playMade = function (event) {
+  // const boxVal = ($(event.target).data('boxVal'))
+  const boxVal = $(event.target).data('box')
+  console.log(boxVal)
+  console.log(gameBoard)
   // check to see if the array index is already occupied
-  if (gameBoard[0] === '') {
+  if (gameBoard[boxVal] === '') {
   // if no, add x or o to gameBoard array at specific index
-    gameBoard[0] = currentLetter
+    gameBoard[boxVal] = currentLetter
+    console.log(gameBoard)
     // also, add x or o to html element
-
+    $(event.target).text(currentLetter)
     // invoke playCounter
     playCount++
     // invoke alternator function
@@ -104,14 +114,18 @@ const playMade = function () {
   } else {
     console.log('already played')
   }
+  console.log(gameBoard)
+  console.log(currentLetter)
+  console.log(playCount)
 }
-
-console.log(playCount)
-
 console.log(gameBoard)
-checkForVictory()
+
+// console.log(playCount)
+
+// console.log(gameBoard)
+// checkForVictory()
 // alternator()
-console.log(currentLetter)
+// console.log(currentLetter)
 
 module.exports = {
   // currentPlayer,

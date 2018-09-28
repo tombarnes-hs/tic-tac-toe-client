@@ -1,5 +1,5 @@
-const gameBoard = ['', '', '', '', '', '', '', '', '']
-
-const fillGameBoard = function () {
-
-}
+// const gameBoard = ['', '', '', '', '', '', '', '', '']
+//
+// const fillGameBoard = function () {
+//
+// }
