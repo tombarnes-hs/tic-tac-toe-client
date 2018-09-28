@@ -1,6 +1,17 @@
 'use strict'
 
 const store = require('../store.js')
+const config = require('../config.js')
+// create a new game
+const onNewGame = function (event) {
+  return $.ajax({
+    url: config.apiUrl + `/games`,
+    method: 'POST',
+    headers: {
+      Authorization: `Token token=${store.user.token}`
+    }
+  })
+}
 
 // create a current player
 //  can use data from store.js the same way we did with tokens after login?
@@ -133,6 +144,6 @@ console.log(gameBoard)
 // console.log(currentLetter)
 
 module.exports = {
-  // currentPlayer,
+  onNewGame,
   playMade
 }

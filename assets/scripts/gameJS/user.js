@@ -1,5 +1,1 @@
 'use strict'
-
-const currentPlayer = {
-
-}
