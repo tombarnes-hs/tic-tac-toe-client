@@ -14,9 +14,23 @@ const api = require('./api.js')
 //     }
 //   })
 // }
+let gameOver = false
+
+// create a play count variable...
+let playCount = 0
+
+// create a currentLetter variable
+let currentLetter = 'x'
 
 const newGameSuccess = function (response) {
   store.game = response.game.id
+  gameOver = false
+  playCount = 0
+  currentLetter = 'x'
+  gameBoard.forEach(function (element) {
+    element = ''
+  })
+  console.log(gameBoard)
 }
 
 const newGameFailure = function () {
@@ -56,7 +70,7 @@ const gameBoard = [
 
 // variable for game gameOver
 
-let gameOver = false
+// let gameOver = false
 
 const checkForVictory = function () {
   // after a user.play being successful, invoke check for victory condition function
@@ -81,7 +95,7 @@ const checkForVictory = function () {
     console.log('Column 1 victory')
     gameOver = true
   // victory is [1], [4], [7] having the same values
-  } else if (gameBoard[1] === gameBoard[4] && gameBoard[4] === gameBoard[5] && gameBoard[1] !== '') {
+  } else if (gameBoard[1] === gameBoard[4] && gameBoard[4] === gameBoard[7] && gameBoard[4] !== '') {
     $('.box').off()
     console.log('Column 2 victory')
     gameOver = true
@@ -111,11 +125,11 @@ const checkForVictory = function () {
 }
 
 // create a play count variable...
-let playCount = 0
+// let playCount = 0
 //  that stores number of plays made
 
 // create a currentLetter variable
-let currentLetter = 'x'
+// let currentLetter = 'x'
 
 // play counter that determines whether 'x' or 'o ' is played
 const alternator = function () {
