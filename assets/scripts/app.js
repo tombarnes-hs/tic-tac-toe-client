@@ -25,4 +25,5 @@ $(() => {
   $('#change-password-button').hide()
   $('#newGame-button').on('click', () => { $('.container').show() })
   $('#newGame-button').on('click', gameEvents.onNewGame)
+  // $('.container').on('click', gameEvents.onNewGame)
 })
