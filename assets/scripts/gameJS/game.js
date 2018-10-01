@@ -23,14 +23,11 @@ let playCount = 0
 let currentLetter = 'x'
 
 const newGameSuccess = function (response) {
-  store.game = response.game.id
+  store.game = response.game
   gameOver = false
   playCount = 0
   currentLetter = 'x'
-  gameBoard.forEach(function (element) {
-    element = ''
-  })
-  console.log(gameBoard)
+  console.log(response.game)
 }
 
 const newGameFailure = function () {
@@ -40,6 +37,7 @@ const newGameFailure = function () {
 const onNewGame = function (event) {
   event.preventDefault()
   // console.log(data)
+  $('.box').text('')
   api.newGame()
     .then(newGameSuccess)
     .catch(newGameFailure)
@@ -62,11 +60,11 @@ const onNewGame = function (event) {
 // }
 
 // gameBoard starts as an array of empty strings and will be updated by user.play
-const gameBoard = [
-  '', '', '',
-  '', '', '',
-  '', '', ''
-]
+// const gameBoard = [
+//   '', '', '',
+//   '', '', '',
+//   '', '', ''
+// ]
 
 // variable for game gameOver
 
@@ -76,41 +74,41 @@ const checkForVictory = function () {
   // after a user.play being successful, invoke check for victory condition function
   // empty variable for game over state
   // victory is [0], [1], [3] having the same values
-  if (gameBoard[0] === gameBoard[1] && gameBoard[1] === gameBoard[2] && gameBoard[0] !== '') {
+  if (store.game.cells[0] === store.game.cells[1] && store.game.cells[1] === store.game.cells[2] && store.game.cells[0] !== '') {
     $('.box').off()
     gameOver = true
   // victory is [4], [5], [6] having the same values
-  } else if (gameBoard[3] === gameBoard[4] && gameBoard[4] === gameBoard[5] && gameBoard[3] !== '') {
+  } else if (store.game.cells[3] === store.game.cells[4] && store.game.cells[4] === store.game.cells[5] && store.game.cells[3] !== '') {
     $('.box').off()
     console.log('Row 2 victory')
     gameOver = true
   // victory is [7], [8], [9] having the same values
-  } else if (gameBoard[6] === gameBoard[7] && gameBoard[7] === gameBoard[8] && gameBoard[6] !== '') {
+  } else if (store.game.cells[6] === store.game.cells[7] && store.game.cells[7] === store.game.cells[8] && store.game.cells[6] !== '') {
     $('.box').off()
     console.log('Row 3 victory')
     gameOver = true
   // victory is [0], [3], [6] having the same values
-  } else if (gameBoard[0] === gameBoard[3] && gameBoard[3] === gameBoard[6] && gameBoard[0] !== '') {
+  } else if (store.game.cells[0] === store.game.cells[3] && store.game.cells[3] === store.game.cells[6] && store.game.cells[0] !== '') {
     $('.box').off()
     console.log('Column 1 victory')
     gameOver = true
   // victory is [1], [4], [7] having the same values
-  } else if (gameBoard[1] === gameBoard[4] && gameBoard[4] === gameBoard[7] && gameBoard[4] !== '') {
+  } else if (store.game.cells[1] === store.game.cells[4] && store.game.cells[4] === store.game.cells[7] && store.game.cells[4] !== '') {
     $('.box').off()
     console.log('Column 2 victory')
     gameOver = true
   // victory is [2], [5], [8] having the same values
-  } else if (gameBoard[2] === gameBoard[5] && gameBoard[5] === gameBoard[8] && gameBoard[2] !== '') {
+  } else if (store.game.cells[2] === store.game.cells[5] && store.game.cells[5] === store.game.cells[8] && store.game.cells[2] !== '') {
     $('.box').off()
     console.log('Column 3 victory')
     gameOver = true
   // victory is [0], [4], [8] having the same values
-  } else if (gameBoard[0] === gameBoard[4] && gameBoard[4] === gameBoard[8] && gameBoard[0] !== '') {
+  } else if (store.game.cells[0] === store.game.cells[4] && store.game.cells[4] === store.game.cells[8] && store.game.cells[0] !== '') {
     $('.box').off()
     console.log('Diagonal l-r victory')
     gameOver = true
   // victory is [2], [4], [6] having the same values
-  } else if (gameBoard[2] === gameBoard[4] && gameBoard[4] === gameBoard[6] && gameBoard[2] !== '') {
+  } else if (store.game.cells[2] === store.game.cells[4] && store.game.cells[4] === store.game.cells[6] && store.game.cells[2] !== '') {
     $('.box').off()
     console.log('Diagonal r-l victory')
     gameOver = true
@@ -155,12 +153,12 @@ const playMade = function (event) {
   // const boxVal = ($(event.target).data('boxVal'))
   const boxVal = $(event.target).data('cell-index')
   console.log(boxVal)
-  console.log(gameBoard)
+  console.log(store.game.cells)
   // check to see if the array index is already occupied
-  if (gameBoard[boxVal] === '') {
+  if (store.game.cells[boxVal] === '') {
   // if no, add x or o to gameBoard array at specific index
-    gameBoard[boxVal] = currentLetter
-    console.log(gameBoard)
+    store.game.cells[boxVal] = currentLetter
+    console.log(store.game.cells)
     // also, add x or o to html element
     $(event.target).text(currentLetter)
     $(event.target).attr('data-cell-value', currentLetter)
@@ -175,7 +173,7 @@ const playMade = function (event) {
 
     const onPlayMade = function (event) {
       return $.ajax({
-        url: config.apiUrl + `/games/${store.game}`,
+        url: config.apiUrl + `/games/${store.game.id}`,
         method: 'PATCH',
         headers: {
           Authorization: `Token token=${store.user.token}`
@@ -197,11 +195,11 @@ const playMade = function (event) {
   } else {
     console.log('already played')
   }
-  console.log(gameBoard)
+  console.log(store.game.cells)
   console.log(currentLetter)
   console.log(playCount)
 }
-console.log(gameBoard)
+// console.log(store.game.cells)
 
 // console.log(playCount)
 
