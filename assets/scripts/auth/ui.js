@@ -8,6 +8,7 @@ const signUpSuccess = function () {
   $('#display-message').html('Sign up successful')
   $('#display-message').css('color', 'green')
   $('#sign-up-form').trigger('reset')
+  $('#sign-up-form').hide()
 }
 
 const signInSuccess = function (response) {
@@ -32,6 +33,7 @@ const signOutSuccess = function () {
   $('#change-password-form').hide()
   $('#newGame-button').hide()
   $('.container').hide()
+  $('#stat-button').hide()
 }
 
 const changePasswordSuccess = function () {

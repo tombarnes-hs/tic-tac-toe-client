@@ -10,13 +10,6 @@ const onViewStats = function () {
     .catch(ui.failure)
 }
 
-const gameReset = function () {
-  $('#newGame-button').on('click', function () {
-    $('.container').detach()
-  })
-}
-
 module.exports = {
-  onViewStats,
-  gameReset
+  onViewStats
 }

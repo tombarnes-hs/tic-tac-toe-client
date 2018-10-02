@@ -19,13 +19,12 @@ $(() => {
 
   // UI events
   $('.container').hide()
-  $('#sign-up-form').hide()
   $('#sign-out-button').hide()
   $('#change-password-form').hide()
   $('#newGame-button').hide()
   $('#change-password-button').hide()
+  $('#stat-button').hide()
   $('#newGame-button').on('click', () => { $('.container').show() })
   $('#newGame-button').on('click', gameEvents.onNewGame)
-  // $('.container').on('click', gameEvents.onNewGame)
   $('#stat-button').on('click', user.onViewStats)
 })
