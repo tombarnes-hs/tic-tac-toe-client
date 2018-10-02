@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Tic-Tac-Toe</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <h1>Tic-Tac-Toe</h1>
+      <form id="sign-up-form">
+        <legend> Create a new account </legend>
+        <p> Username </p>
+        <input required type="text" name="credentials[email]" placeholder="Enter Email">
+        <p> Password </p>
+        <input required type="password" name="credentials[password]" placeholder="Enter Password">
+        <p> Confirm Password </p>
+        <input required type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+        <input type="submit">
+      </form>
+      <br>
+      <form id="sign-in-form">
+        <legend> Sign-In to Begin Playing </legend>
+          <p> Username </p>
+        <input required type="text" name="credentials[email]" placeholder="Enter Email">
+        <p> Password </p>
+        <input required type="password" name="credentials[password]" placeholder="Enter Password">
+        <input type="submit">
+
+      </form>
+      <br>
+      <form id="change-password-form">
+        <legend> Change password </legend>
+        <p> Old Password </p>
+          <input required type="password" name="passwords[old]" placeholder="Old Password">
+          <p> New Password </p>
+          <input required type="password" name="passwords[new]" placeholder="New Password">
+          <input type="submit">
+      </form>
+      <br>
+      <div id="sign-out-button">
+      <button type="button">Logout</button>
+    </div>
+    <br>
+      <p id="display-message"></p>
+    <br>
+    <button type="button" id="stat-button">Click to view stats</button>
+      <p id="display-stats"></p>
+      <button type="button" id="newGame-button">New Game</button>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm box grey" data-cell-index="0">
+            <p class="display"></p>
+          </div>
+          <div class="col-sm box grey" data-cell-index="1">
+            <p class="display"></p>
+          </div>
+          <div class="col-sm box grey" data-cell-index="2">
+            <p class="display"></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm box grey" data-cell-index="3">
+            <p class="display"></p>
+          </div>
+          <div class="col-sm box grey" data-cell-index="4">
+            <p class="display"></p>
+          </div>
+          <div class="col-sm box grey" data-cell-index="5">
+            <p class="display"></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm box grey" data-cell-index="6">
+            <p class="display"></p>
+          </div>
+          <div class="col-sm box grey" data-cell-index="7">
+            <p class="display"></p>
+          </div>
+          <div class="col-sm box grey" data-cell-index="8">
+            <p class="display"></p>
+          </div>
+        </div>
+    </div>
+    </body>
+</html>
