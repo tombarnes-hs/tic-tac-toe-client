@@ -1,113 +1,105 @@
-<!-- [![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
 
-# browser-template
+# Tic-Tac-Toe
 
-A template for starting front-end projects. Webpack for `require` system, build
-pipeline, and development server. Boostrap and Handlebars.js included. No
-front-end frameworks included.
+This is the first of four projects I'll be doing in the Web Development Immersive
+with General Assembly. Below I'l be listing technologies used, the planning process,
+and what I'd like to do to improve my program.
 
-## Installation
+## Technologies Used
 
-1. [Download](../../archive/master.zip) this template.
-1. Move to the `wdi/projects` directory, then unzip the template directory with
-    `unzip /Users/<user-name>/Downloads/browser-template-master.zip`.
-1. Rename the template directory from `browser-template-master` to
-    `<project-name>-client`.
-1. Empty [`README.md`](README.md) and fill with your own content.
-1. Replace all instances of `tic-tac-toe-client` with the name of
-    your project.
-1. Move into the new project and `git init`.
-1. Add all of the files in your project with the command `git add --all`.
-      - **Note: This is the only time you should run this command!**
-1. Commit all of your files with the command `git commit`.
-      - Your commit title should read `Initial commit`.
-1. Install dependencies with `npm install`.
-1. Create a new repository on [github.com](https://github.com),
-    _not GitHub Enterprise_.
-1. Name the new repository with the same name used on Step 3.
-1. Follow the instructions on your new repository's setup page. For details on
-   how to push to Github, refer to the section on Github entitled "…or push an existing
-   repository from the command line." Further documentation can be found [here](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/).
+* JavaScript
+* JQuery
+* Ajax Calls to an API
+* HTML5
+* CSS
+* Bootstrap
 
-## Structure
+## Planning Process
 
-Developers should store JavaScript files in [`assets/scripts`](assets/scripts).
-The "manifest" or entry-point is
-[`assets/scripts/app.js`](assets/scripts/app.js). In general, only
-application initialization goes in this file. It's normal for developers to
-start putting all code in this file, but encourage them to break out different
-responsibilities and use the `require` syntax put references where they're
-needed.
+I started the planning process by reviewing the project requirements, creating
+creating user stories, and sketching a [wireframe](https://imgur.com/Y0kf0KU) based
+on the user stories.
 
-Developers should set `apiUrls.production` and `apiUrls.development` in
-[`assets/scripts/config.js`](assets/scripts/config.js).  With
-`apiUrls` set, developers may rely on `apiUrl` as the base for API
-URLs.
+### User Stories
 
-Developers should store styles in [`assets/styles`](assets/styles) and load them
-from [`assets/styles/index.scss`](assets/styles/index.scss). Bootstrap version 3 is
-included in this template.
+#### Login and authentication
 
-Developers should use [getFormFields](get-form-fields.md) to retrieve form data
-to send to an API.
+* User can register as a new user via email and password entry
+* User can login via email and password confirmation
+* User can press a button to logout after signing in
+* User can change password and being logged in
+* User receives messages indicating success or failure of authentication steps listed above
 
-To deploy a browser-template based SPA, run `grunt deploy`.
+#### Game Play
 
-## Adding Images
+* After login, user starts as player X and selects a container in a 3x3 grid
+* User sees X on selected container
+* User continues as player O and selects a container not previously selected
+* Sees error message if trying to select an already selected container
+* User sees message indicating who’s turn it is upon a play being made
+* Play continues with user alternating X and O selections on the grid until victory state occurs
+* User receives a message indicating whether player X or O won
+* User is able to click “reset” button that will send game board back to “new game state” without a page reload
+* User can review how many games they’ve won
 
-To add images to your project, you must store them in the `public` directory.
-To use the image in HTML or CSS, write the path to the image like this:
+With four days to work on the project, I set out with the following plan:
 
-```html
-<img src="public/cat.jpg">
-```
-or
-```css
-#my-cool-div {
-  background-image: url('public/cat.jpg')
-}
-```
+Day 1. Write abstract game logic in Javascript
 
-Note that there's no `./` or `/` in front of `public/filename.jpg`.
+Day 2. Game User Interface (build front-end, game grid, and flow of messages
+that guide the user from login to logout)
 
-## Adding Fonts
+Day 3. Connect User Authentication to API
 
-To add custom fonts to your app, you can either use a CDN like Google Fonts, or
-you can download the fonts and save them in the `public` directory. If you use
-the former method, follow the directions on the website providing the fonts.
+Day 4. Connect Game Events to API (when a new game is created, when plays to the
+board are made, and when a user wants to view stats)
 
-For local fonts, put the files in `public`, and then import and use them in a
-`.scss` file like this:
+## Development Process
 
-```scss
-@font-face {
-  font-family: 'Nature Beauty';
-  src: url('public/Nature-Beauty.ttf') format('truetype');
-}
+Unfortunately, I didn't stick to the gameplan I created for myself. This being my
+first "start-to-finish" project, I quickly deviated from my plan. I decided to
+start with User Authentication, which I was most comfortable with, and accomplished
+that during the second half of the first day. I began by referring to my user stories from
+above and methodically working through each user story.
 
-.element-with-custom-font {
-  font-family: 'Nature Beauty';
-}
-```
+Unfortunately, my methodical process and clean code stopped after the first day.
+What I was most concerned about was writing the abstract game logic. I spent a little
+over a day taking care of this task. I didn't quite know where to begin, so I started
+by playing games of tic-tac-toe in my notebook. This helped me figure out the
+conditions for victory and how to programmatically step through many iterations of a
+game. From there I wrote out a function that would check an array for a game over state.
 
-## Tasks
+Things took off from there and I lost any sense of organization for my code. I don't
+remember the order in which things happened, but I created a function that alternated
+whether it was X or Os turn and wrote the function that tied everything together if
+a legal play was made. I created the HTML gameboard with boostrap and connected that with my
+function. By the middle of the third day I had a clickable board that a user could interact
+with and a game that would end when game over conditions were met. I also spent some time
+adding in the UI flow (only login and create new user records visible on initial page load,
+game board shows up when new game button is clicked after user login, messages pop up, etc).
 
-Developers should run these often!
+The final day and a half was spent with connecting my user actions in a game to the backend API.
+This was the most challenging and frustrating parts of the project. Eventually I got it done.
 
-- `grunt nag` or just `grunt`: runs code quality analysis tools on your code
-    and complains
-- `grunt make-standard`: reformats all your code in the JavaScript Standard Style
-- `grunt <server|serve|s>`: generates bundles, watches, and livereloads
-- `grunt build`: place bundled styles and scripts where `index.html` can find
-    them
 
-## Additional Resources
+## Unsolved Problems / Still To Do
 
-- [Modern Javascript Explained for Dinosaurs](https://medium.com/@peterxjang/modern-javascript-explained-for-dinosaurs-f695e9747b70)
-- [Making Sense of Front End Build Tools](https://medium.freecodecamp.org/making-sense-of-front-end-build-tools-3a1b3a87043b)
+My current project meets technical specifications but there is more I'd like to do.
 
-## [License](LICENSE)
+### Visual Design
 
-1. All content is licensed under a CC­BY­NC­SA 4.0 license.
-1. All software code is licensed under GNU GPLv3. For commercial use or
-    alternative licensing, please contact legal@ga.co. -->
+I spent up until 11:30 the night before the project was due completing the programming
+that takes place beneath the surface and had no time to enhance the visual components of the page. I enjoy
+front-end work so I'm a bit ashamed about the current design.
+
+### Cleaner Code
+
+When I abandoned the methodical approach once I started writing the game logic, I abandoned the best practices that would have made my code cleaner and more modular. This is best represented by the fact that I have an AJAX call written within the function that governs when a play is made. I'd like to have separated my code into different files based on purpose.
+
+### Next Version
+
+In my next version I'd like a user to be able to view a record of all of the games they played including the winning condition of each game. I'd like to explore more of bootstrap and develop a more compelling user interface. 
+
+## Conclusion
+
+I thoroughly enjoyed the process of building this page. Each time a line of code correctly logged what I wanted to the console felt like a victory. Testing as I built and asking questions when I was stuck were the things that helped me get to this point. Building out the game logic was the most satisfying part of this project because it was what I felt least comfortable with.
